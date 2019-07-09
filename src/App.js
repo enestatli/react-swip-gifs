@@ -3,19 +3,19 @@ import './App.css';
 import Swiper from 'react-id-swiper';
 
 const VerticalSlider = ({ data }) => {
-  console.log(data)
+  //console.log(data)
   const Slide = ({ item }) => {
     if (item == null) return null;
     return (
       <div>
-          {console.log(item)}
+          <img src={item.data.url} width="100%" />
       </div>
     );
   };
   const SlideMapper = items => {
     return items
       .filter(item => {
-        if (item.data.url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+        if (item.data.domain === "i.redd.it") {
           return true;
         }
         return false;
@@ -45,6 +45,8 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Hello, this is a test title</h1>
+      <h2>Please wait to see some magic happens!</h2>
       <VerticalSlider data={data} />
     </div>
   );

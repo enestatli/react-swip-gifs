@@ -8,17 +8,15 @@ const VerticalSlider = ({ data }) => {
     if (item == null) return null;
     return (
       <div>
-        
+          {console.log(item)}
       </div>
     );
   };
   const SlideMapper = items => {
     return items
       .filter(item => {
-        if ("reddit_video_preview" in item.data.preview) {
-          if ("fallback_url" in item.data.preview.reddit_video_preview) {
-            return true;
-          }
+        if (item.data.url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+          return true;
         }
         return false;
       })

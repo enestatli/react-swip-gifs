@@ -4,14 +4,28 @@ import Swiper from 'react-id-swiper';
 
 const VerticalSlider = ({ data }) => {
   //console.log(data)
-  const Slide = ({ item }) => {
-    if (item == null) return null;
-    return (
-      <div>
-          <img src={item.data.url} width="100%" />
-      </div>
-    );
-  };
+/*  const params = {
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true
+    },
+    effect: "fade",
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    spaceBetween: 30,
+    autoplay: true,
+  };*/
+
+  const Slide = ({ item }) => (
+    <div className="swiper-slide">
+      <img src={item.data.url} alt={item.data.title} width="500px" />
+    </div>
+  )
+
   const SlideMapper = items => {
     return items
       .filter(item => {
@@ -22,7 +36,7 @@ const VerticalSlider = ({ data }) => {
       })
       .map((item, index) => <Slide key={index} item={item} />);
   };
-  return <Swiper>{SlideMapper(data)}</Swiper>;
+  return <Swiper >{SlideMapper(data)}</Swiper>;
 };
 
 
@@ -47,7 +61,9 @@ function App() {
     <div className="App">
       <h1>Hello, this is a test title</h1>
       <h2>Please wait to see some magic happens!</h2>
-      <VerticalSlider data={data} />
+      <div className="container">
+        <VerticalSlider data={data} />
+      </div>
     </div>
   );
 }
